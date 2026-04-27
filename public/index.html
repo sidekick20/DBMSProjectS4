@@ -8,11 +8,68 @@
 
 <h1>Job Tracker</h1>
 
-<input id="role" placeholder="Job Role">
-<button onclick="addJob()">Add</button>
+<!-- 🔍 FILTERS -->
+<input id="search" placeholder="Search company or role" />
 
-<ul id="list"></ul>
+<select id="statusFilter">
+  <option>All</option>
+  <option>Applied</option>
+  <option>Interview</option>
+  <option>Rejected</option>
+  <option>Offer</option>
+</select>
+
+<select id="sort">
+  <option value="new">Newest First</option>
+  <option value="old">Oldest First</option>
+</select>
+
+<button onclick="loadData()">Apply</button>
+
+<hr>
+
+<!-- ➕ ADD FORM (THIS WAS MISSING) -->
+<h2>Add Application</h2>
+<form id="applicationForm">
+  <input id="company_name" placeholder="Company" required />
+  <input id="role" placeholder="Role" required />
+
+  <select id="status">
+    <option>Applied</option>
+    <option>Interview</option>
+    <option>Rejected</option>
+    <option>Offer</option>
+  </select>
+
+  <input id="salary" type="number" placeholder="Salary" />
+  <input id="contact_name" placeholder="Contact Name" />
+  <input id="contact_number" placeholder="Contact Number" />
+
+  <button type="submit">Add Job</button>
+</form>
+
+<hr>
+
+<!-- 📢 MESSAGE -->
+<div id="message"></div>
+
+<!-- 📊 TABLE -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Salary</th>
+      <th>Contact</th>
+      <th>Applied Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
 
 <script src="script.js"></script>
 </body>
 </html>
+
