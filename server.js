@@ -78,8 +78,8 @@ app.post("/applications", (req, res) => {
     sql,
     [company_name, role, status, salary, contact_name, contact_number],
     (err) => {
-      if (err) return res.json(err);
-      res.json("Application Added");
+      if (err) return res.status(500).json({ error: err.message });
+      res.status(201).json({ message: "Application Added" });
     }
   );
 });
@@ -88,8 +88,8 @@ app.delete("/applications/:id", (req, res) => {
   const { id } = req.params;
 
   db.query("DELETE FROM applications WHERE id = ?", [id], (err) => {
-    if (err) return res.json(err);
-    res.json("Deleted");
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ message: "Deleted" });
   });
 });
 
@@ -101,8 +101,8 @@ app.put("/applications/:id", (req, res) => {
     "UPDATE applications SET status = ? WHERE id = ?",
     [status, id],
     (err) => {
-      if (err) return res.json(err);
-      res.json("Updated");
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ message: "Updated" });
     }
   );
 });

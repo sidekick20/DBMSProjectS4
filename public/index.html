@@ -1,75 +1,122 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Job Tracker</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<h1>Job Tracker</h1>
+    <div class="layout">
 
-<!-- 🔍 FILTERS -->
-<input id="search" placeholder="Search company or role" />
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>Tracker</h2>
+            <p>Dashboard</p>
+            <p>Applications</p>
+        </div>
 
-<select id="statusFilter">
-  <option>All</option>
-  <option>Applied</option>
-  <option>Interview</option>
-  <option>Rejected</option>
-  <option>Offer</option>
-</select>
 
-<select id="sort">
-  <option value="new">Newest First</option>
-  <option value="old">Oldest First</option>
-</select>
+        <div class="main">
 
-<button onclick="loadData()">Apply</button>
 
-<hr>
+            <div class="topbar">
+                <h1>Job Dashboard</h1>
+                <input id="search" placeholder="Search..." />
+            </div>
 
-<!-- ➕ ADD FORM (THIS WAS MISSING) -->
-<h2>Add Application</h2>
-<form id="applicationForm">
-  <input id="company_name" placeholder="Company" required />
-  <input id="role" placeholder="Role" required />
 
-  <select id="status">
-    <option>Applied</option>
-    <option>Interview</option>
-    <option>Rejected</option>
-    <option>Offer</option>
-  </select>
+            <div class="stats">
+                <div class="card">
+                    <h3 id="total">0</h3>
+                    <p>Total</p>
+                </div>
+                <div class="card">
+                    <h3 id="applied">0</h3>
+                    <p>Applied</p>
+                </div>
+                <div class="card">
+                    <h3 id="interview">0</h3>
+                    <p>Interview</p>
+                </div>
+                <div class="card">
+                    <h3 id="offer">0</h3>
+                    <p>Offers</p>
+                </div>
+            </div>
 
-  <input id="salary" type="number" placeholder="Salary" />
-  <input id="contact_name" placeholder="Contact Name" />
-  <input id="contact_number" placeholder="Contact Number" />
 
-  <button type="submit">Add Job</button>
-</form>
+            <div class="actions">
+                <select id="statusFilter">
+                    <option>All</option>
+                    <option>Applied</option>
+                    <option>Interview</option>
+                    <option>Rejected</option>
+                    <option>Offer</option>
+                </select>
 
-<hr>
+                <select id="sort">
+                    <option value="new">Newest</option>
+                    <option value="old">Oldest</option>
+                </select>
 
-<!-- 📢 MESSAGE -->
-<div id="message"></div>
+                <button onclick="loadData()">Apply</button>
+            </div>
 
-<!-- 📊 TABLE -->
-<table border="1">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Role</th>
-      <th>Status</th>
-      <th>Salary</th>
-      <th>Contact</th>
-      <th>Applied Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody id="tableBody"></tbody>
-</table>
 
-<script src="script.js"></script>
+            <div class="grid">
+
+
+                <div class="panel">
+                    <h2>Add Job</h2>
+                    <form id="applicationForm">
+                        <input id="company_name" placeholder="Company" required />
+                        <input id="role" placeholder="Role" required />
+
+                        <select id="status">
+                            <option>Applied</option>
+                            <option>Interview</option>
+                            <option>Rejected</option>
+                            <option>Offer</option>
+                        </select>
+
+                        <input id="salary" type="number" placeholder="Salary" />
+                        <input id="contact_name" placeholder="Contact Name" />
+                        <input id="contact_number" placeholder="Contact Number" />
+
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+
+
+                <div class="panel">
+                    <h2>Applications</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Salary</th>
+                                <th>Contact</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="message"></div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-</html>
 
+</html>
